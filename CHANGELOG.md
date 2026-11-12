@@ -29,4 +29,5 @@ The first release.
 - Quiz results are read once they've finished counting up.
 - Settings list (m), help (h), repeat (r). Settings include reading your own sent messages, friends coming online and going offline, secret hints (spoilers, off at first) and update announcements.
 - New Steam achievements are announced.
+- Works with the itch.io copy of the game as well as Steam's, and a part of the mod that can't hook into some copy of the game is skipped without stopping the rest.
 - An installer, and an announcement on the main menu when a newer version is out.

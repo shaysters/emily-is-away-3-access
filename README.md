@@ -9,7 +9,7 @@ It works with NVDA, JAWS and other Windows screen readers, and falls back to Win
 
 ## Requirements
 
-- Emily is Away <3 for Windows, from Steam: <https://store.steampowered.com/app/978460/Emily_is_Away_3/>
+- Emily is Away <3 for Windows, from Steam (<https://store.steampowered.com/app/978460/Emily_is_Away_3/>) or itch.io (<https://kyleseeley23.itch.io/emilyisaway3>).
 - A screen reader such as NVDA or JAWS (optional; without one, the mod uses Windows' built-in speech).
 
 ## Installing
@@ -21,6 +21,10 @@ It works with NVDA, JAWS and other Windows screen readers, and falls back to Win
 5. Start Emily is Away <3 from Steam as usual. The mod says "Emily is Away 3 Access 1.0 loaded".
 
 If the installer won't start and mentions `VCRUNTIME140.dll`, install the [Microsoft Visual C++ Redistributable (x64)](https://aka.ms/vs/17/release/vc_redist.x64.exe) and try again.
+
+### Copies from itch.io
+
+The mod also supports the itch.io copy of Emily is Away <3. The installer finds Steam copies by itself; for the itch.io copy, use the Browse button and choose the folder that contains `Emily3.exe`. If you use the itch app, the game is in a folder named after it inside `%APPDATA%\itch\apps` (typing `%APPDATA%` in File Explorer's address bar takes you to your AppData\Roaming folder). Without Steam, there are no Steam achievements to announce; everything else is the same.
 
 ### Updating and uninstalling
 

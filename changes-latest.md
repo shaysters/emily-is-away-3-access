@@ -6,6 +6,6 @@ The first release of Emily is Away 3 Access: Emily is Away <3, the social-networ
 - The fake installer, sign-up, the log-in in chapter 4, notifications and friend requests, the ending, the main menu (timeline, photos, playlists, storyline, secrets) and the two secret apps all work from the keyboard.
 - A settings list (press m), including secret hints (spoilers, off at first). New Steam achievements are announced.
 
-Tested through all five chapters on both Emily's and Evelyn's stories.
+Tested through all five chapters on both Emily's and Evelyn's stories. Works with the Steam copy of the game and the itch.io copy (for the itch.io copy, use the installer's Browse button to choose the game folder).
 
 To install, download **EmilyIsAway3AccessInstaller.exe** below and run it. Or install BepInEx 5 (32-bit) yourself and extract **EmilyIsAway3Access.zip** into the game folder.

@@ -34,7 +34,7 @@ namespace EmilyIsAway3Access
             // Before the game's own patches: the test sandbox must be in place first.
             if (gameObject.AddComponent<TestDriver>() == null) Log.LogError("TestDriver could not be added.");
 #endif
-            new Harmony(Id).PatchAll(typeof(Plugin).Assembly);
+            SafePatch.All(new Harmony(Id), typeof(Plugin).Assembly, Log);
             Hooks.TextEntryActiveFn = () => Reader.FocusedBox() != null;
             gameObject.AddComponent<SettingsMenu>();
             gameObject.AddComponent<Keys>();

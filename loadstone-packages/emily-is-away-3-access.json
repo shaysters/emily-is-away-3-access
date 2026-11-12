@@ -10,7 +10,8 @@
   "game": "emily-is-away-3",
   "distributions": {
     "steam": "supported",
-    "standalone": "untested"
+    "itch": "supported",
+    "standalone": "supported"
   },
   "dependencies": [
     {
