@@ -1,0 +1,64 @@
+{
+  "manifestVersion": 1,
+  "id": "emily-is-away-3-access",
+  "name": "Emily is Away 3 Access",
+  "description": "Screen reader and braille accessibility for Emily is Away <3 by Kyle Seeley. Reads every Facenook page like a web page you can arrow through, every chat message, the reply choices and what you type, notifications, notes, quizzes and events, describes every photo and profile picture, and makes the installer, sign-up, menus, secret apps and settings work from the keyboard.",
+  "authors": [
+    "Shaysters",
+    "Claude"
+  ],
+  "game": "emily-is-away-3",
+  "distributions": {
+    "steam": "supported",
+    "standalone": "untested"
+  },
+  "dependencies": [
+    {
+      "id": "bepinex-5-win-x86"
+    }
+  ],
+  "channels": {
+    "stable": {
+      "source": "release"
+    }
+  },
+  "install": [
+    {
+      "step": "extract-archive",
+      "routes": [
+        {
+          "from": "BepInEx/plugins/EmilyIsAway3Access/**",
+          "to": "${gameDir}/BepInEx/plugins/EmilyIsAway3Access"
+        },
+        {
+          "from": "EmilyIsAway3Access-README.md",
+          "to": "${gameDir}/EmilyIsAway3Access-README.md"
+        },
+        {
+          "from": "EmilyIsAway3Access-CHANGELOG.md",
+          "to": "${gameDir}/EmilyIsAway3Access-CHANGELOG.md"
+        }
+      ]
+    },
+    {
+      "step": "expect",
+      "checks": [
+        {
+          "fileExists": "${gameDir}/BepInEx/plugins/EmilyIsAway3Access/EmilyIsAway3Access.dll",
+          "message": "The download didn't contain the mod (no EmilyIsAway3Access.dll)."
+        },
+        {
+          "fileExists": "${gameDir}/BepInEx/plugins/EmilyIsAway3Access/prism.dll",
+          "message": "The download didn't contain the speech library (no prism.dll)."
+        }
+      ]
+    }
+  ],
+  "packaging": {
+    "artifacts": [
+      {
+        "file": "../dist/EmilyIsAway3Access.zip"
+      }
+    ]
+  }
+}

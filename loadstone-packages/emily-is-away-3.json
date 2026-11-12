@@ -1,0 +1,18 @@
+{
+  "manifestVersion": 1,
+  "kind": "game",
+  "id": "emily-is-away-3",
+  "name": "Emily is Away <3",
+  "detect": {
+    "steam": {
+      "appId": 978460,
+      "dirName": "Emily is Away 3"
+    },
+    "markers": [
+      "Emily3.exe"
+    ]
+  },
+  "userData": {
+    "windows": "${localLow}/KyleSeeley/Facenook - Welcome to Facenook"
+  }
+}

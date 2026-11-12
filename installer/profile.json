@@ -1,0 +1,9 @@
+{
+  "mode": "single-mod",
+  "mod": "emily-is-away-3-access",
+  "title": "Emily is Away 3 Access Installer",
+  "registries": [
+    "github:shaysters/emily-is-away-3-access"
+  ],
+  "lockRegistries": true
+}
