@@ -66,13 +66,19 @@ namespace EmilyIsAway3Access
             if (photo != null && t == photo.captionText.transform) return true;
             if (SecretApps.SkipText(t)) return true;
             // A settings row's title, said with its slider.
-            if (t.name == "Title" && t.parent != null && t.parent.GetComponentInChildren<Slider>() != null) return true;
+            if (t.name == "Title" && t.parent != null && RowHasSlider(t.parent)) return true;
             if (QuizResults.Calculating(t)) return true;
             // Quiz answers, said with their radio buttons.
             FBQuizQuestionBox quiz = t.GetComponentInParent<FBQuizQuestionBox>();
             if (quiz != null && quiz.answerTexts != null && System.Array.Exists(quiz.answerTexts, a => a != null && a.transform == t)) return true;
             // A form row's label, already said with its text box.
             return t.name == "FieldText" && t.parent != null && t.parent.GetComponentInChildren<TMP_InputField>() != null;
+        }
+
+        private static bool RowHasSlider(Transform row)
+        {
+            for (int i = 0; i < row.childCount; i++) if (row.GetChild(i).GetComponent<Slider>() != null) return true;
+            return false;
         }
 
         // 0 = the page or window, 1 = browser bar and the rest, 2 = chat bar.
@@ -173,6 +179,18 @@ namespace EmilyIsAway3Access
 
         private bool _pageUnread;
 
+        private System.Collections.IEnumerator AfterClose(Component before, bool pageUnread)
+        {
+            float until = Time.unscaledTime + 0.3f;
+            while (Time.unscaledTime < until) yield return null;
+            FFApplicationManager app = FFApplicationManager.Instance;
+            if (app != null && app.webpage != null && app.webpage.IsLoading) yield break;   // a page is coming: it's read
+            if (ModalRoot() != null) yield break;                                           // another pop-up: it's read
+            if (pageUnread || _pageUnread) ReadPage();
+            else if (before != null && before.gameObject.activeInHierarchy && Reader.Instance.FocusOn(before, false)) Tell.Queue(Reader.Instance.Said());
+            else Tell.Queue("Closed.");
+        }
+
         private void ReadPage()
         {
             _pageUnread = false;
@@ -197,10 +215,9 @@ namespace EmilyIsAway3Access
                 // (Not when the pop-up opened a page: the page is read instead.)
                 FFApplicationManager app = FFApplicationManager.Instance;
                 bool loading = app != null && app.webpage != null && app.webpage.IsLoading;
-                if (loading) { }
-                else if (closed && _pageUnread) ReadPage();
-                else if (closed && _before != null && _before.gameObject.activeInHierarchy && Reader.Instance.FocusOn(_before, false)) Tell.Queue(Reader.Instance.Said());
-                else if (closed) Tell.Queue("Closed.");
+                // Wait a moment: a pop-up's button often opens a page a frame or two after the
+                // pop-up closes (Log Out), and then the page is read instead.
+                if (closed && !loading) StartCoroutine(AfterClose(_before, _pageUnread));
                 _before = null;
                 return;
             }

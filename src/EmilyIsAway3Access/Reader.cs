@@ -55,6 +55,15 @@ namespace EmilyIsAway3Access
                 bool left = Input.GetKeyDown(KeyCode.LeftArrow), right = Input.GetKeyDown(KeyCode.RightArrow);
                 bool enter = Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter);
                 bool space = Input.GetKeyDown(KeyCode.Space);
+                // Escape closes the pop-up or chat bar list in front (its close, Cancel or collapse button).
+                if (Input.GetKeyDown(KeyCode.Escape) && !Hooks.TypingReply() && Screens.ModalRoot() != null && FocusedBox() == null)
+                {
+                    Refresh();
+                    Item close = null;
+                    foreach (string word in new[] { "close,", "Cancel,", "collapse," })
+                        if (close == null) close = _items.FirstOrDefault(i => i.Pressable && i.Enabled && Describe(i).StartsWith(word, StringComparison.OrdinalIgnoreCase));
+                    if (close != null) { Press(close); Keys.UseKey(); return; }
+                }
                 if (!(down || up || home || end || left || right || enter || space)) return;
                 if (Hooks.TypingReply() && !Keys.Ctrl()) return;   // every key types the reply
 

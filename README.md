@@ -90,6 +90,7 @@ The game is a fake web browser showing Facenook. Each page is like a web page: t
 | l | Chat | Open the newest link in the chat, or the one picked with Shift+l. |
 | Shift+l | Chat | Step back through older links. |
 | i | Chat | Open the profile of the person you're chatting with. |
+| Escape | Pop-ups and chat bar lists | Close it (its close, Cancel or collapse button). |
 | r | Everywhere | Repeat the last thing the mod said. |
 | h | Everywhere | Hear the list of keys. |
 | m | Everywhere | Open or close the mod's settings. |

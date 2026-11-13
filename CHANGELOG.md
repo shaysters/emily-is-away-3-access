@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 (2026-11-12)
+
+### Fixed
+
+- Escape closes the pop-up or chat bar list in front, as if you pressed its close, Cancel or collapse button. The game's Options pop-up couldn't be closed with Escape before.
+- After a pop-up that opens a page (Log Out), the page is read without a stray line about the button you were on.
+- A settings row's title is only left out when that row has its slider.
+
 ## 1.0 (2026-11-12)
 
 The first release.
